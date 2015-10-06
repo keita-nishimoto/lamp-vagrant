@@ -1,24 +1,32 @@
-#provision_ansible_test
+# provision_ansible_test
 
 ## 概要
 Vagrantのprovisionでansibleを使う為のツールです。
 vagrant upを実行した際にansibleのplaybookが適応されます。
 
-※下記のサイトを参考にさせて頂きました。
-http://www.moyashi-koubou.com/blog/vagrant_ansible_windows/
+## 事前準備
+Ansibleのインストールを行います。
+```
+$ brew install ansible
+```
 
 ## 使い方
 
 本リポジトリの直下で以下のコマンドを実行します。
 ```
-vagrant up
+$ git clone https://github.com/keita-nishimoto/playbook_lamp.git
+$ vagrant up
 ```
 
-結果としてprovisioning配下のplaybookの内容が適応されます。
+結果として[playbook_lamp](https://github.com/keita-nishimoto/playbook_lamp)配下のplaybookの内容が適応されます。
 
 ### 注意
-Vagrantfileにはchef/centos-6.5というboxを適応していますのでこの名前はご自身の環境に合わせて変えて下さい。
-※boxの状態によってはcommonの処理の途中でエラーになります。
+※ [hosts](https://github.com/keita-nishimoto/playbook_lamp/blob/master/hosts)のIPアドレス及び、[Vagrantfile](https://github.com/keita-nishimoto/lamp_vagrant_provisioning/blob/master/Vagrantfile)のIPアドレスは適時好きな物に書換えて下さい。
 
-初期状態で動作させるには本モジュールと同階層に以下のリポジトリをGitクロンしておく必要があります。
-https://github.com/keita-nishimoto/playbook_lamp
+初期状態で動作させるには本モジュールと同階層に[playbook_lamp](https://github.com/keita-nishimoto/playbook_lamp)をGitクロンしておく必要があります。
+※下記のような状態にしておく必要があります。
+
+```
+├── lamp_vagrant_provisioning
+├── playbook_lamp
+```

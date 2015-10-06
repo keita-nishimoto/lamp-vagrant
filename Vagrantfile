@@ -8,9 +8,20 @@
 Vagrant.configure(2) do |config|
   config.vm.box = "chef/centos-6.5"
   config.vm.network "private_network", ip: "192.168.33.12"
+  config.vm.provider "virtualbox" do |vm|
+    vm.customize ["modifyvm", :id, "--memory", "1024", "--cpus", "2", "--ioapic", "on"]
+  end
 
-  config.vm.provision :shell do |sh|
-    sh.path = "provision.sh"
-    sh.args = "playbook_lamp/site.yml playbook_lamp/hosts"
+  # 同階層に設置してある関連リポジトリを共有ディレクトリとしてマウント
+  %w(
+    playbook_lamp
+  ).each do |dir|
+    config.vm.synced_folder "../#{dir}", "/home/vagrant/#{dir}" if  File.exist?("../#{dir}")
+  end
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.limit = "all”
+    ansible.inventory_path = "../playbook_lamp/hosts"
+    ansible.playbook = "../playbook_lamp/site.yml"
   end
 end
