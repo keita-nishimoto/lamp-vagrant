@@ -20,7 +20,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.provision "ansible" do |ansible|
-    ansible.limit = "all”
+    ansible.limit = 'all'
     ansible.inventory_path = "../playbook_lamp/hosts"
     ansible.playbook = "../playbook_lamp/site.yml"
   end
