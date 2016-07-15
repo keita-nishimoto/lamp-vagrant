@@ -16,3 +16,7 @@ nbproject/
 
 # vagrant生成ファイル群
 .vagrant/
+
+# Intellj IDEA
+.idea/
+lamp_vagrant_provisioning.iml
