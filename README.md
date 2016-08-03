@@ -1,8 +1,8 @@
-# provision_ansible_test
+# lamp_vagrant_provisioning
 
 ## 概要
-Vagrantのprovisionでansibleを使う為のツールです。
-vagrant upを実行した際にansibleのplaybookが適応されます。
+VagrantのprovisionでLAMP環境を作成する為のツールです。
+vagrant upを実行した際にAnsibleのplaybookが適応されます。
 
 ## 事前準備
 Ansibleのインストールを行います。
