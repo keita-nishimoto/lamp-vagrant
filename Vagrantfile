@@ -22,7 +22,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision "ansible" do |ansible|
     ansible.limit = 'all'
-    ansible.inventory_path = "../playbook_lamp/local"
-    ansible.playbook = "../playbook_lamp/site.yml"
+    ansible.inventory_path = "../lamp-ansible/local"
+    ansible.playbook = "../lamp-ansible/site.yml"
   end
 end
