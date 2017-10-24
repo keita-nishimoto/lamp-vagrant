@@ -1,4 +1,4 @@
-# lamp_vagrant_provisioning
+# lamp-vagrant
 
 ## 概要
 VagrantのprovisionでLAMP環境を作成する為のツールです。
