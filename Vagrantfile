@@ -13,13 +13,6 @@ Vagrant.configure(2) do |config|
     vm.customize ["modifyvm", :id, "--memory", "1024", "--cpus", "2", "--ioapic", "on"]
   end
 
-  # 同階層に設置してある関連リポジトリを共有ディレクトリとしてマウント
-  %w(
-    playbook_lamp
-  ).each do |dir|
-    config.vm.synced_folder "../#{dir}", "/home/vagrant/#{dir}" if  File.exist?("../#{dir}")
-  end
-
   config.vm.provision "ansible" do |ansible|
     ansible.limit = 'all'
     ansible.inventory_path = "../lamp-ansible/local"
